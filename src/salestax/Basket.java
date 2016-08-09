@@ -14,19 +14,23 @@ public class Basket {
     }
 
     public Money tax() {
-        Money tax=Money.ZERO;
+        Money totalTax=Money.ZERO;
         for (Entry good: goods.entrySet()) {
-            tax = tax.add(good(good).tax().timesOf(quantity(good)));
+            Money taxPerUnit = good(good).tax();
+            Money taxForAllUnits = taxPerUnit.timesOf(quantity(good));
+            totalTax = totalTax.add(taxForAllUnits);
         }
-        return tax;
+        return totalTax;
     }
 
     public Money priceIncludingTax() {
-        Money price=Money.ZERO;
+        Money totalPrice=Money.ZERO;
         for (Entry good: goods.entrySet()) {
-            price = price.add(good(good).totalPrice().timesOf(quantity(good)));
+            Money pricePerUnit = good(good).totalPrice();
+            Money priceForAllUnits = pricePerUnit.timesOf(quantity(good));
+            totalPrice = totalPrice.add(priceForAllUnits);
         }
-        return price;
+        return totalPrice;
     }
 
     public HashMap<Good,Integer> getItems() {

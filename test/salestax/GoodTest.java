@@ -45,7 +45,7 @@ public class GoodTest {
     @Test
     public void shouldVerifyIfToStringMethodReturnsTheGoodDescription(){
         Good good = new Good("Book", new Money(10.01), true,false);
-        assertEquals("Book at 10.01",good.toString());
+        assertEquals("Book - 10.01",good.toString());
     }
 
 }

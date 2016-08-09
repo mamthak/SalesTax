@@ -37,6 +37,7 @@ public class CheckOutTest {
         HashMap<Good, Integer> goodsWithQuantity = new HashMap<>();
         goodsWithQuantity.put(new Good("Chocolate",new Money(10.0),false,false),1);
         goodsWithQuantity.put(new Good("Imported Pink Color Watch",new Money(100.0),false,false),1);
+
         when(basket.getItems()).thenReturn(goodsWithQuantity);
         when(basket.tax()).thenReturn(new Money(1.05));
         when(basket.priceIncludingTax()).thenReturn(new Money(111.05));
