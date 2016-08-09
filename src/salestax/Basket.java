@@ -16,7 +16,7 @@ public class Basket {
     public Money tax() {
         Money tax=Money.ZERO;
         for (Entry good: goods.entrySet()) {
-            tax = tax.add(good(good).Tax().timesOf(quantity(good)));
+            tax = tax.add(good(good).tax().timesOf(quantity(good)));
         }
         return tax;
     }
@@ -24,7 +24,7 @@ public class Basket {
     public Money priceIncludingTax() {
         Money price=Money.ZERO;
         for (Entry good: goods.entrySet()) {
-            price = price.add(good(good).TotalPrice().timesOf(quantity(good)));
+            price = price.add(good(good).totalPrice().timesOf(quantity(good)));
         }
         return price;
     }

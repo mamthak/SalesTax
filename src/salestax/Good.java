@@ -17,22 +17,22 @@ public class Good {
         isExempted = IsExempted;
     }
 
-    public Money Tax() {
-        return SalesTax().add(ImportedSalesTax());
+    public Money tax() {
+        return salesTax().add(importedSalesTax());
     }
 
-    public Money TotalPrice() {
-        return price.add(Tax());
+    public Money totalPrice() {
+        return price.add(tax());
     }
 
-    private Money SalesTax() {
+    private Money salesTax() {
 
         if (isExempted)
             return Money.ZERO;
         return price.percentOf(TAX_PERCENT);
     }
 
-    private Money ImportedSalesTax() {
+    private Money importedSalesTax() {
         if (!isImported)
             return Money.ZERO;
         return price.percentOf(IMPORTED_TAX_PERCENT);

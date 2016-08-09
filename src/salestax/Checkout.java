@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class CheckOut {
+    public static final String TOTAL_TAX = "Total - ";
+    public static final String TOTAL_SALES_TAX = "Sales Taxes - ";
     private Basket basket;
 
     public CheckOut(Basket basket) {
@@ -16,8 +18,8 @@ public class CheckOut {
         for (Map.Entry good: basket.getItems().entrySet()) {
             receipt.add(quantity(good) +" " + goodName(good));
         }
-        receipt.add("Sales Taxes - "+basket.tax());
-        receipt.add("Total - "+basket.priceIncludingTax());
+        receipt.add(TOTAL_SALES_TAX +basket.tax());
+        receipt.add(TOTAL_TAX +basket.priceIncludingTax());
         return receipt;
 
     }
